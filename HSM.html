@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder Alerts</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h2>SMS/Email Reminder Alerts</h2>
+    <button  value="pop" onclick="openPopup()">Set Reminder</button>
+
+    <div class="popup" id="reminderPopup">
+        <h3>Set a Reminder</h3>
+        <label>Reminder Type:</label>
+        <select id="reminderType">
+            <option value="appointment">Appointment</option>
+            <option value="medication">Medication</option>
+        </select>
+        
+        <label>Notification Method:</label>
+        <select id="notificationMethod">
+            <option value="sms">SMS</option>
+            <option value="email">Email</option>
+        </select>
+        
+        <label>Date:</label>
+        <input type="date" id="reminderDate">
+        
+        <label>Time:</label>
+        <input type="time" id="reminderTime">
+        
+        <label>Message:</label>
+        <textarea id="reminderMessage" placeholder="Enter reminder details..."></textarea>
+        
+        <button onclick="saveReminder()">Save Reminder</button>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById("reminderPopup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("reminderPopup").style.display = "none";
+        }
+
+        function saveReminder() {
+            let type = document.getElementById("reminderType").value;
+            let method = document.getElementById("notificationMethod").value;
+            let date = document.getElementById("reminderDate").value;
+            let time = document.getElementById("reminderTime").value;
+            let message = document.getElementById("reminderMessage").value;
+
+            if (date && time && message) {
+                alert(`Reminder Set!\nType: ${type}\nMethod: ${method}\nDate: ${date}\nTime: ${time}\nMessage: ${message}`);
+                closePopup();
+            } else {
+                alert("Please fill all fields!");
+            }
+        }
+
+      
+        // function openPopup() {
+        //     document.getElementById('popup').style.display = 'block';
+        // }
+        // function closePopup() {
+        //     document.getElementById('popup').style.display = 'none';
+        //     alert("Reminder Saved!");
+        // }
+    
+    </script>
+</body>
+</html>
